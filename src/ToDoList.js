@@ -31,7 +31,23 @@ class ToDoList extends React.Component {
 		this.setState({showOperations: true});
 		event.preventDefault();
 	};
-	
+
+	onEditItem = i => {
+		this.setState(state => {
+			const list = state.list.map((item, j) => {
+				if (j === i) {
+					return item + 1;
+				}
+				else {
+					return item
+				}
+			});
+			return {
+				list
+			};
+		});
+	};
+
 	render() {
 	  return (
 		<div className="ToDoList">
@@ -40,8 +56,13 @@ class ToDoList extends React.Component {
 				  To Do List Items
 				</h1>
 				<ul>
-					{this.state.list.map(item => (
-					<li><a href=""key={item} onClick={this.pressed}>{item}</a></li>
+					{this.state.list.map((item, index) => (
+					<li><a href="" key={item} onClick={
+						(event) => {
+							this.onEditItem(index);
+							event.preventDefault();
+						}
+					}>{item}</a></li>
 					))}
 				</ul>
 			</div>
