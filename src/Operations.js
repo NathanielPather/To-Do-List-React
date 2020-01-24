@@ -7,12 +7,14 @@ class Operations extends React.Component {
 		this.state = {
 			showEdit: false,
 			showDelete: false,
-			value: ''
+			value: this.props.value
 		};
 		
 		this.editTask = this.editTask.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+
+		console.log(this.props);
 	}
 	
 	editTask() {
@@ -43,11 +45,6 @@ class Operations extends React.Component {
 					Task:
 					<input type="text" value={this.state.value} onChange={this.handleChange}/>
 				</label>
-{
-/* Problem  here */
-/* onEditItem() not passed */
-/* calling pressed() instead to display buttons, but submit should call it */
-}
 				<input type="submit" value="Edit" onClick={() => this.props.onEditItem(this.state.value)} />
 			</form>
 		}
@@ -60,8 +57,8 @@ class Operations extends React.Component {
 				<button onClick={this.editTask}>Edit</button>
 				<button onClick={this.deleteTask}>Delete</button>
 			</div>
-		
 		}
+
 		return (
 			<div>
 				{render}
