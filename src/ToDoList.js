@@ -42,8 +42,6 @@ class ToDoList extends React.Component {
 	}
 
 	onEditItem = (val) => {
-		console.log("val is " + val);
-		console.log("onEditItem() called");
 		this.setState(state => {
 			const list = state.list.map((item, j) => {
 				if (j === this.state.index) {
@@ -53,6 +51,17 @@ class ToDoList extends React.Component {
 					return item
 				}
 			});
+			return {
+				showOperations: false,
+				list
+			};
+		});
+	};
+
+	onDeleteItem = (index) => {
+		this.setState(state => {
+			const list = state.list.filter((item, j) => index !== j);
+
 			return {
 				showOperations: false,
 				list
@@ -80,7 +89,7 @@ class ToDoList extends React.Component {
 			
 			<div className="Form"> {
 					(this.state.showOperations) ?
-						<Operations onEditItem={this.onEditItem} value={this.state.item}/> :
+						<Operations onDeleteItem={this.onDeleteItem} index={this.state.index} onEditItem={this.onEditItem} value={this.state.item}/> :
 						<Form onAddItem={this.onAddItem}/>
 				}
 			</div>

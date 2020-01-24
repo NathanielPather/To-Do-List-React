@@ -7,14 +7,13 @@ class Operations extends React.Component {
 		this.state = {
 			showEdit: false,
 			showDelete: false,
-			value: this.props.value
+			value: this.props.value,
+            index: this.props.index
 		};
 		
 		this.editTask = this.editTask.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-
-		console.log(this.props);
 	}
 	
 	editTask() {
@@ -24,20 +23,17 @@ class Operations extends React.Component {
 		});
 	};
 	
-	deleteTask() {
-		console.log("deleteTask() called");
-	}
-	
 	handleChange(event) {
 		this.setState({value: event.target.value});
 	}
 
 	handleSubmit(event) {
 		event.preventDefault();
+        this.setState({value: ''});
 	}
 	
 	render() {
-		var render = <div></div>
+		let render = <div></div>
 		if(this.state.showEdit) {
 			render = 
 			<form onSubmit={this.handleSubmit}>
@@ -55,7 +51,7 @@ class Operations extends React.Component {
 					Choose an Operation to Peform
 				</h1>
 				<button onClick={this.editTask}>Edit</button>
-				<button onClick={this.deleteTask}>Delete</button>
+				<button onClick={() => this.props.onDeleteItem(this.state.index)}>Delete</button>
 			</div>
 		}
 
