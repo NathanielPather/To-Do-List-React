@@ -8,10 +8,14 @@ class ToDoList extends React.Component {
 	constructor(props) {
         super(props);
 		this.state = {
+			index: '',
 			value: '',
 			list: [1, 2, 3],
 			showOperations: false
 		};
+
+		this.pressed = this.pressed.bind(this);
+		this.onEditItem = this.onEditItem.bind(this);
 	}
 	
 	onAddItem = (val) => {
@@ -26,23 +30,41 @@ class ToDoList extends React.Component {
 	};
 	
 /* Display operations */
+/*
 	pressed = (event) => {
 		console.log("Pressed");
 		this.setState({showOperations: true});
-		event.preventDefault();
 	};
+	*/
 
-	onEditItem = i => {
+pressed(event, index) {
+	event.preventDefault();
+	console.log("Pressed");
+	this.setState({
+		showOperations: true,
+		index: index
+	});
+}
+
+	onEditItem = (val) => {
+		console.log("val is " + val);
+		console.log("onEditItem() called");
 		this.setState(state => {
 			const list = state.list.map((item, j) => {
-				if (j === i) {
-					return item + 1;
+				console.log("item is: " + item);
+				console.log("j is: " + j);
+				console.log("index is: " + this.state.index);
+				/* problem here */
+				if (j === this.state.index) {
+					console.log("if block runs");
+					return val;
 				}
 				else {
 					return item
 				}
 			});
 			return {
+				showOperations: false,
 				list
 			};
 		});
@@ -56,19 +78,56 @@ class ToDoList extends React.Component {
 				  To Do List Items
 				</h1>
 				<ul>
+					{/*
 					{this.state.list.map((item, index) => (
-					<li><a href="" key={item} onClick={
-						(event) => {
-							this.onEditItem(index);
-							event.preventDefault();
+						<li><a href="" key={item} onClick={
+							(event) => {
+								this.onEditItem(index);
+								event.preventDefault();
+							}
+						}>{item}</a></li>
+					))}
+					 */}
+					{
+						/* problem  in onClick() */
+						/* calling function immediately instead of on submit */
+					}
+					{/*
+					{this.state.list.map((item, index) => (
+						<li><a href="" key={item} onClick={
+							(event) => {
+								this.pressed();
+{
+
+}
+								this.onEditItem(index);
+								event.preventDefault();
+							}
+						}>{item}</a></li>
+					))}
+			*/}
+
+					{/*
+					{this.state.list.map((item, index) => (
+						<li><a href=""key={item} onClick={this.pressed}>{item}</a></li>
+					))}
+					*/}
+					{
+						/* passing onEditItem() to <a> not operations.js */
+					}
+					{this.state.list.map((item, index) => (
+						<li><a href="" key={item} onClick={
+							(event) => {
+							this.pressed(event, index);
+							//this.onEditItem();
 						}
-					}>{item}</a></li>
+						}>{item}</a></li>
 					))}
 				</ul>
 			</div>
 			
 			<div className="Form">
-			{(this.state.showOperations) ? <Operations /> : <Form onAddItem={this.onAddItem}/>}
+			{(this.state.showOperations) ? <Operations onEditItem={this.onEditItem}/> : <Form onAddItem={this.onAddItem}/>}
 			</div>
 		</div>
 	  );

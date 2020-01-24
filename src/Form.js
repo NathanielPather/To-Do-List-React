@@ -26,7 +26,7 @@ class Form extends React.Component {
 				<form onSubmit={this.handleSubmit}>
 					<label>
 						Name:
-						<input type="text" value={this.state.value} onChange={this.handleChange} />
+						<input type="text" value={this.props.test} onChange={this.handleChange} />
 					</label>
 					<input type="submit" value="Submit" onClick={() => this.props.onAddItem(this.state.value)}/>
 				</form>

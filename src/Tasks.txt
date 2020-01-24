@@ -1,5 +1,4 @@
 Operations.js
 	Change edit function to show array element in text field
 	Change delete funciton to show delete form
-	Change edit function to change element in array
 	Change delete function to delete element in array
