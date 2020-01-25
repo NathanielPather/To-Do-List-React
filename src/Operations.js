@@ -52,6 +52,7 @@ class Operations extends React.Component {
 				</h1>
 				<button onClick={this.editTask}>Edit</button>
 				<button onClick={() => this.props.onDeleteItem(this.state.index)}>Delete</button>
+				<button onClick={() => this.props.onCancel()}>Cancel</button>
 			</div>
 		}
 

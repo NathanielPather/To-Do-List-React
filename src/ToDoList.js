@@ -78,6 +78,14 @@ class ToDoList extends React.Component {
 		});
 	};
 
+	onCancel = () => {
+		this.setState(state => {
+			return {
+				showOperations: false
+			};
+		});
+	};
+
 	render() {
 	  return (
 		<div className="ToDoList">
@@ -98,7 +106,7 @@ class ToDoList extends React.Component {
 			
 			<div className="Form"> {
 					(this.state.showOperations) ?
-						<Operations onDeleteItem={this.onDeleteItem} index={this.state.index} onEditItem={this.onEditItem} value={this.state.item}/> :
+						<Operations onCancel={this.onCancel} onDeleteItem={this.onDeleteItem} index={this.state.index} onEditItem={this.onEditItem} value={this.state.item}/> :
 						<Form onAddItem={this.onAddItem}/>
 				}
 			</div>
