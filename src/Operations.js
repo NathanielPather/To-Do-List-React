@@ -33,7 +33,7 @@ class Operations extends React.Component {
 	}
 	
 	render() {
-		let render = <div></div>
+		let render = <div><p>Empty div. Will be overwritten. You should not see this.</p></div>;
 		if(this.state.showEdit) {
 			render = 
 			<form onSubmit={this.handleSubmit}>
@@ -41,7 +41,7 @@ class Operations extends React.Component {
 					Task:
 					<input type="text" value={this.state.value} onChange={this.handleChange}/>
 				</label>
-				<input type="submit" value="Edit" onClick={() => this.props.onEditItem(this.state.value)} />
+				<button type="submit" value="Edit" onClick={() => this.props.onEditItem(this.state.value)}>Edit</button>
 			</form>
 		}
 		else {

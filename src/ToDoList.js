@@ -1,5 +1,5 @@
 import React from 'react';
-import './ToDoList.css';
+import './ToDoList.scss';
 import Form from './Form.js';
 import Operations from './Operations.js';
 
@@ -78,11 +78,11 @@ class ToDoList extends React.Component {
 				</h1>
 				<ul>
 					{this.state.list.map((item, index) => (
-						<li><a href="" key={item} onClick={
+						<li><button key={item} onClick={
 							(event) => {
 								this.pressed(event, index, item);
 							}
-						}>{item}</a></li>
+						}>{item}</button></li>
 					))}
 				</ul>
 			</div>
