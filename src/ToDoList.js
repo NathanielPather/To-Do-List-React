@@ -20,7 +20,7 @@ class ToDoList extends React.Component {
 	}
 	
 	onAddItem = (val) => {
-		if (val == "") {
+		if (val === "") {
 			alert("Cannot create an empty task.\n Please enter a value.");
 		}
 		else {
@@ -47,7 +47,7 @@ class ToDoList extends React.Component {
 	}
 
 	onEditItem = (val) => {
-		if (val == "") {
+		if (val === "") {
 			alert("Cannot edit a task to be empty.\n Please enter a value.");
 		}
 		else {
