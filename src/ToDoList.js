@@ -20,14 +20,19 @@ class ToDoList extends React.Component {
 	}
 	
 	onAddItem = (val) => {
-		this.setState(state => {
-			const list = state.list.concat(val);
-			
-			return {
-				list,
-				value: ''
-			};
-		});
+		if (val == "") {
+			alert("Cannot create an empty task.\n Please enter a value.");
+		}
+		else {
+			this.setState(state => {
+				const list = state.list.concat(val);
+
+				return {
+					list,
+					value: ''
+				};
+			});
+		}
 	};
 	
 /* Display operations */
