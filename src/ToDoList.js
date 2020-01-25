@@ -47,20 +47,24 @@ class ToDoList extends React.Component {
 	}
 
 	onEditItem = (val) => {
-		this.setState(state => {
-			const list = state.list.map((item, j) => {
-				if (j === this.state.index) {
-					return val;
-				}
-				else {
-					return item
-				}
+		if (val == "") {
+			alert("Cannot edit a task to be empty.\n Please enter a value.");
+		}
+		else {
+			this.setState(state => {
+				const list = state.list.map((item, j) => {
+					if (j === this.state.index) {
+						return val;
+					} else {
+						return item
+					}
+				});
+				return {
+					showOperations: false,
+					list
+				};
 			});
-			return {
-				showOperations: false,
-				list
-			};
-		});
+		}
 	};
 
 	onDeleteItem = (index) => {
