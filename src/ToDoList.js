@@ -11,7 +11,7 @@ class ToDoList extends React.Component {
 			item: '',
 			index: '',
 			value: '',
-			list: [1, 2, 3],
+			list: ["Improve Styling", "Refactor to mySQL database", "Apply to EzyVet"],
 			showOperations: false
 		};
 

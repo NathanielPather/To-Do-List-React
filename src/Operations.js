@@ -37,22 +37,32 @@ class Operations extends React.Component {
 		if(this.state.showEdit) {
 			render = 
 			<form onSubmit={this.handleSubmit}>
-				<label>
-					Task:
-					<input type="text" value={this.state.value} onChange={this.handleChange}/>
-				</label>
-				<button type="submit" value="Edit" onClick={() => this.props.onEditItem(this.state.value)}>Edit</button>
+				<div className="formWrapper">
+					<div>
+						Task:
+					</div>
+
+					<div>
+						<input type="text" value={this.state.value} onChange={this.handleChange}/>
+					</div>
+
+					<div>
+						<button type="submit" value="Edit" onClick={() => this.props.onEditItem(this.state.value)}>Edit</button>
+					</div>
+				</div>
 			</form>
 		}
 		else {
 			render = 
 			<div className="Operations">
 				<h1>
-					Choose an Operation to Peform
+					Choose an Operation
 				</h1>
-				<button onClick={this.editTask}>Edit</button>
-				<button onClick={() => this.props.onDeleteItem(this.state.index)}>Delete</button>
-				<button onClick={() => this.props.onCancel()}>Cancel</button>
+				<div id="operationsWrapper">
+					<button onClick={this.editTask}>Edit</button>
+					<button onClick={() => this.props.onDeleteItem(this.state.index)}>Delete</button>
+					<button onClick={() => this.props.onCancel()}>Cancel</button>
+				</div>
 			</div>
 		}
 

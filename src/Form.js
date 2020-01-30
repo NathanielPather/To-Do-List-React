@@ -27,11 +27,19 @@ class Form extends React.Component {
 					Add To Do List Item
 				</h1>
 				<form onSubmit={this.handleSubmit}>
-					<label>
-						Name:
-						<input type="text" value={this.state.value} onChange={this.handleChange} />
-					</label>
-					<button type="submit" value="Submit" onClick={() => this.props.onAddItem(this.state.value)}>Add</button>
+					<div className="formWrapper">
+						<div>
+							Name:
+						</div>
+
+						<div>
+							<input type="text" value={this.state.value} onChange={this.handleChange} />
+						</div>
+
+						<div>
+							<button className="addButton" type="submit" value="Submit" onClick={() => this.props.onAddItem(this.state.value)}>Add</button>
+						</div>
+					</div>
 				</form>
 			</div>
 		);
