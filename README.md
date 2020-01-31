@@ -19,4 +19,6 @@ This is a To Do List Website application allowing users to record their responsi
   <li>Delete tasks.</li>
   <li>Edit tasks.</li>
   <li>Cancel editting of task.</li>
+  <li>Alert uses and prevent them from adding an empty task.</li>
+  <li>Alert uses and prevent them from editting a task to be empty.</li>
 </ul>
